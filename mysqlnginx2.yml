@@ -33,5 +33,5 @@ spec:
   type: NodePort
   ports:
   - nodePort: 32266
-    port: 83
+    port: 88
     targetPort: 88
