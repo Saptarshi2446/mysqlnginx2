@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-app
+      version: blue
+  template:
+    metadata:
+      name: mysql-pod
+      labels:
+        app: nginx-app
+        version: blue
+    spec:
+      containers:
+      - name: mysql-container
+        image: saptarshi2446/mysqlnginx2:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: mysql-svc
+  labels:
+    app: mysql-app
+spec:
+  selector:
+    app: nginx-app
+    version: blue
+  type: NodePort
+  ports:
+  - nodePort: 32225
+    port: 88
+    targetPort: 88
