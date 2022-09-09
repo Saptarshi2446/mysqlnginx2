@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mysql-container
-        image: saptarshi2446/mysqlnginx:latest
+        image: saptarshi2446/mysqlnginx2:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
